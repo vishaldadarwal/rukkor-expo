@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Modal,
   Platform,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -152,7 +153,13 @@ const LoginScreen = ({ navigation }) => {
   );
 
   return (
-    <KeyboardAvoidingView style={styles.scrollContainer}>
+    // <KeyboardAvoidingView
+    //   behavior={Platform.OS === 'ios' ? 'padding' : null}
+    //   style={styles.scrollContainer}
+    //   keyboardVerticalOffset={Platform.OS === 'ios' ? 40 : 0} // Adjust the offset as needed
+    // >
+    <View style={{flex:1}}>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
       <View style={styles.container}>
         <View style={{ alignItems: "center", marginTop: 50 }}>
           <View
@@ -285,7 +292,8 @@ const LoginScreen = ({ navigation }) => {
           </View>
         </Modal>
       </View>
-    </KeyboardAvoidingView>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -300,7 +308,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   scrollContainer: {
-    flex: 1,
+    flex:1,
     backgroundColor: "white",
     paddingTop: 20,
     paddingBottom: 50,
@@ -337,6 +345,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F3F3F3",
     paddingHorizontal: 10,
+    marginBottom:20,
   },
   imageStyle: {
     width: 20,

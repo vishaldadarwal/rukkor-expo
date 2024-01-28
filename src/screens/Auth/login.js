@@ -153,11 +153,6 @@ const LoginScreen = ({ navigation }) => {
   );
 
   return (
-    // <KeyboardAvoidingView
-    //   behavior={Platform.OS === 'ios' ? 'padding' : null}
-    //   style={styles.scrollContainer}
-    //   keyboardVerticalOffset={Platform.OS === 'ios' ? 40 : 0} // Adjust the offset as needed
-    // >
     <View style={{flex:1}}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
       <View style={styles.container}>

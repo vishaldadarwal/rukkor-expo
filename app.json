@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "rukkor",
+    "slug": "rukkor",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/rukkor-logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/Splash-Screen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#e7651c"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.vishalverma.rukkor"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1d5f8cd6-e906-4dc8-87a3-2ee90b911b8e"
+      }
+    }
+  }
+}

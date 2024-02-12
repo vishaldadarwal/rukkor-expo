@@ -19,6 +19,7 @@ import { useSelector,useDispatch } from "react-redux";
 import axios from "axios";
 import * as ImagePicker from 'expo-image-picker';
 import { UpdateUser } from "../../../redux/reducers/user";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Alias = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState("");
@@ -85,6 +86,16 @@ const Alias = ({ navigation }) => {
       setSelectedImage(result.assets[0].uri);
     }
   };
+
+
+ const storeToke= async()=>{
+    try {
+      await AsyncStorage.setItem('userToken', "true");
+      navigation.navigate("Home")
+    } catch (error) {
+      console.error('Error storing token: ', error);
+    }   
+  }
   useEffect(() => {
     getPermissionAsync();
   }, []);
@@ -111,7 +122,7 @@ const Alias = ({ navigation }) => {
           console.log("alis---",UpdateProfile?.data?.data)
           Alert.alert(message);
           UpdateProfile.reset();
-          navigation.navigate("Home")
+          storeToke()
 
       }
   }
@@ -275,7 +286,9 @@ const Alias = ({ navigation }) => {
               </View>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Home")}
+              onPress={async() =>{
+                navigation.navigate("Home")           
+              }}
               style={{
                 padding: 15,
                 borderRadius: 8,

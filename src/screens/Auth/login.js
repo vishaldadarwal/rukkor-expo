@@ -21,6 +21,7 @@ import { useMutation } from "@tanstack/react-query";
 import { loginUser, setProfileData } from "../../redux/reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 import * as Device from 'expo-device';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 // import RNPickerSelect from 'react-native-picker-select';
 // import { Dropdown } from 'react-native-material-dropdown';
 // import { Picker } from '@react-native-picker/picker';
@@ -58,7 +59,7 @@ const LoginScreen = ({ navigation }) => {
 
 
 
-  const gotToScreen = () => {
+  const gotToScreen = async() => {
     var payload = {
       userProfile: null
     }
@@ -71,6 +72,7 @@ const LoginScreen = ({ navigation }) => {
     } else if (data.alias == null || data.alias_name == null) {
       navigation.navigate("Alias")
     } else {
+      await AsyncStorage.setItem('userToken', "true");
       navigation.navigate("Home")
     }
   }

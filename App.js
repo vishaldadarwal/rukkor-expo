@@ -20,7 +20,7 @@ export default function App() {
   return (
     // Provide the client to your App
     <Provider store={store}>
-    <SafeAreaProvider>
+    <SafeAreaProvider style={{flex:1}} >
       <QueryClientProvider client={queryClient}>
         <NavigationContainer>
           <MainStack />

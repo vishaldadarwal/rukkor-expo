@@ -16,6 +16,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { logoutUser } from "../../redux/reducers/user";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Home = ({ navigation }) => {
   const userData = useSelector((state) => state.user?.user);
@@ -41,6 +42,11 @@ const Home = ({ navigation }) => {
     }
   });
 
+  const logOut = async()=>{
+    await AsyncStorage.removeItem("userToken")
+    navigation.navigate("Auth");
+  }
+
   useEffect(() => {
     if (logOutUserMutation.isSuccess) {
       console.log("logout-----", logOutUserMutation.data?.data);
@@ -52,11 +58,11 @@ const Home = ({ navigation }) => {
       };
       dispatch(logoutUser(payload));
       logOutUserMutation.reset();
-      navigation.navigate("Login");
+      logOut();
     }
     if (logOutUserMutation.isError) {
       Alert.alert("Something went wrong!");
-      console.log("error", logOutUserMutation.error,userData.device_id);
+      // console.log("error", logOutUserMutation?.error,userData?.device_id);
       logOutUserMutation.reset();
     }
   }, [logOutUserMutation]);
@@ -69,7 +75,8 @@ const Home = ({ navigation }) => {
         </View>
         <TouchableOpacity
           onPress={() => {
-            logOutUserMutation.mutate();
+            // logOutUserMutation.mutate();
+            logOut()
           }}
           style={{
             backgroundColor: "#E7651C",

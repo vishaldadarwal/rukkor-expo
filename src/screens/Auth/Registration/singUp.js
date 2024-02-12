@@ -315,12 +315,12 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: "space-between",
     backgroundColor: "white",
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
   },
   container: {
     flex: 1,
     backgroundColor: "white",
-    paddingHorizontal: 20,
+    // paddingHorizontal: 10,
   },
   title: {
     fontSize: 24,
@@ -379,7 +379,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
-    height:48
+    height:48,
   },
   buttotTextView:{
     flexDirection: "row",
